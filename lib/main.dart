@@ -15,9 +15,50 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
+  @override
+  _LandingPageState createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  int selectedItem = 0;
+
   @override
   Widget build(BuildContext context) {
+    Widget navItem({String title, int index}) {
+      return InkWell(
+        onTap: () {
+          setState(() {
+            selectedItem = index;
+          });
+        },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              style: GoogleFonts.poppins(
+                fontSize: 18,
+                color: Color(0XFF1D1E3C),
+                fontWeight:
+                    index == selectedItem ? FontWeight.w500 : FontWeight.w300,
+              ),
+            ),
+            Container(
+              width: 66,
+              height: 2,
+              decoration: BoxDecoration(
+                color: index == selectedItem
+                    ? Color(0XFFFE998D)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -42,98 +83,30 @@ class LandingPage extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Guide',
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: Color(0XFF1D1E3C),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Container(
-                              width: 66,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: Color(0XFFFE998D),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                          ],
+                        navItem(
+                          title: 'Guide',
+                          index: 0,
                         ),
                         SizedBox(
                           width: 50,
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Pricing',
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: Color(0XFF1D1E3C),
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            Container(
-                              width: 66,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                          ],
+                        navItem(
+                          title: 'Pricing',
+                          index: 1,
                         ),
                         SizedBox(
                           width: 50,
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Team',
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: Color(0XFF1D1E3C),
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            Container(
-                              width: 66,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                          ],
+                        navItem(
+                          title: 'Team',
+                          index: 2,
                         ),
                         SizedBox(
                           width: 50,
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Stories',
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                color: Color(0XFF1D1E3C),
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            Container(
-                              width: 66,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                          ],
+                        navItem(
+                          title: 'Stories',
+                          index: 3,
                         ),
                       ],
                     ),
