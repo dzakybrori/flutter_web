@@ -52,6 +52,7 @@ flutter:
   assets:
     - assets/images/background.png
     - assets/images/btn_account.png
+    - assets/images/icon_down.png
     - assets/images/illustration.png
     - assets/images/logo.png
 
